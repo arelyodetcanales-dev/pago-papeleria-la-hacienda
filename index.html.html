@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#167b55">
+<title>Pago por transferencia | Papelería La Hacienda</title>
+<style>
+:root { color-scheme: light; }
+* { box-sizing: border-box; }
+body { margin:0; padding:24px 16px; font-family:Arial, sans-serif; background:#f3f6f4; color:#18352a; }
+main { max-width:440px; margin:32px auto; background:#fff; border-radius:22px; padding:28px 22px; box-shadow:0 8px 30px #173b2a16; }
+.brand { text-align:center; color:#167b55; font-weight:800; letter-spacing:.2px; font-size:23px; }
+h1 { text-align:center; font-size:22px; margin:18px 0 8px; }
+.intro { text-align:center; color:#5c6d64; line-height:1.5; margin:0 0 24px; }
+.label { color:#68776f; font-size:12px; text-transform:uppercase; letter-spacing:.08em; margin:18px 0 6px; }
+.value { font-size:16px; font-weight:700; overflow-wrap:anywhere; }
+.clabe { font-size:21px; letter-spacing:.5px; }
+button { width:100%; border:0; border-radius:12px; padding:15px; margin-top:18px; background:#167b55; color:white; font-size:16px; font-weight:700; cursor:pointer; }
+.note { margin-top:22px; padding:14px; background:#f0f6f2; border-radius:12px; color:#53665b; font-size:13px; line-height:1.5; }
+footer { text-align:center; color:#87938c; font-size:12px; margin-top:20px; }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand">Papelería La Hacienda</div>
+  <h1>Paga por transferencia</h1>
+  <p class="intro">Escanea este código, copia los datos y realiza tu transferencia desde la aplicación de tu banco.</p>
+  <div class="label">Banco receptor</div>
+  <div class="value">Mercado Pago</div>
+  <div class="label">Titular</div>
+  <div class="value">Dulce Karina Barcenas Gonzalez</div>
+  <div class="label">CLABE interbancaria</div>
+  <div class="value clabe" id="clabe">722969010255212285</div>
+  <button onclick="copyClabe()">Copiar CLABE</button>
+  <div class="note"><strong>Importante:</strong> Ingresa el importe de tu compra en tu aplicación bancaria. Tu compra queda pagada cuando confirmemos que el dinero se reflejó en nuestra cuenta.</div>
+  <footer>Gracias por tu compra 💚</footer>
+</main>
+<script>
+function copyClabe() {
+  const value = document.getElementById('clabe').textContent.trim();
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(value).then(() => alert('CLABE copiada'));
+  } else {
+    const field = document.createElement('textarea');
+    field.value = value; document.body.appendChild(field); field.select();
+    document.execCommand('copy'); field.remove(); alert('CLABE copiada');
+  }
+}
+</script>
+</body>
+</html>
